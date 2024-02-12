@@ -1,0 +1,33 @@
+-- Table pour les jours du festival
+CREATE TABLE jours_festival (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    jour VARCHAR(255),
+    capacite INT
+);
+
+-- Table d'authentification
+CREATE TABLE utilisateurs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    login VARCHAR(255),
+    nom VARCHAR(255),
+    prenom VARCHAR(255),
+    mot_de_passe VARCHAR(255)
+);
+
+-- Table pour les réservations
+CREATE TABLE reservations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255),
+    type_passe VARCHAR(255),
+    jour_reservation VARCHAR(255),
+    nb_places INT,
+    commentaire TEXT
+);
+
+-- Table de liaison entre utilisateur et réservation
+CREATE TABLE reservation_utilisateur (
+    id_utilisateur INT,
+    id_reservation INT,
+    FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id),
+    FOREIGN KEY (id_reservation) REFERENCES reservations(id)
+);
